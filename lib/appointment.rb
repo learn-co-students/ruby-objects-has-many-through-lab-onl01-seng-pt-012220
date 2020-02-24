@@ -15,7 +15,16 @@ class Appointment
     @@all
   end
   
-  def new_appointment
+  def new_song(name, genre)
+    Song.new(name,self,genre)
   end
 
+  def songs
+    Song.all.select{|song| song.artist == self}
+  end
+
+  def genres
+    songs.map(&:genre)
+  end
+  
 end
